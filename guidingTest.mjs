@@ -9,7 +9,7 @@ async function main() {
   assert.equal(reservation.train_id, 'express_2000');
   assert.equal(reservation.seats.length, 4);
   assert.equal(reservation.seats[0], '1A');
-  assert.equal(reservation.booking_reference, '75bcd15');
+  assert.equal(reservation.booking_reference, '75bcd16');
 }
 
 /**
@@ -26,7 +26,6 @@ function makeRequest(request) {
       },
       async (response) => {
         if (response.statusCode >= 400) return reject(new Error(`status code: ${response.statusCode}`));
-
         try {
           const body = await json(response);
           return resolve(body);

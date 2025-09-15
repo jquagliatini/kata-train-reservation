@@ -1,9 +1,7 @@
-export class ReservationRequest {
-  constructor(
-    public trainId: string,
-    public seatCount: number,
-  ) {}
-}
+export type ReservationRequest = {
+  trainId: string;
+  seatCount: number;
+};
 
 type Seat = {
   coach: string;
@@ -15,3 +13,5 @@ export type Reservation = {
   bookingId: string;
   seats: Seat[];
 };
+
+export type ReservationDto = { train_id: string; booking_reference: string; seats: string[] };

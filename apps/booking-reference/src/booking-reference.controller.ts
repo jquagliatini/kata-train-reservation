@@ -6,8 +6,6 @@ let count = 123456789;
 export class BookingReferenceController {
   @Get('booking_reference')
   getBookingReference(): string {
-    count++;
-
-    return count.toString(16);
+    return (count++).toString(16);
   }
 }

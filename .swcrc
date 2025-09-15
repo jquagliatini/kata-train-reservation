@@ -1,5 +1,6 @@
 {
   "$schema": "https://swc.rs/schema.json",
+  "sourceMaps": true,
   "jsc": {
     "target": "esnext",
     "parser": {

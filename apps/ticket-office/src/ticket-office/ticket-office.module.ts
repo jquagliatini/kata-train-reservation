@@ -6,7 +6,7 @@ import { TicketOfficeConfigModule } from '../config/ticket-office-config.module.
 
 import { TicketOfficeController } from './ticket-office.controller.js';
 import { BOOKING_REFERENCE_FINDER_TOKEN } from './booking-reference.finder.js';
-import { ReservationService } from './reservation.service.js';
+import { TicketOffice } from './ticket-office.js';
 import { HttpBookingReferenceFinder } from './http-booking-reference.finder.js';
 import { ReservableTrainRepository } from './reservable-train-repository.js';
 import { HttpTrainDataService, TRAIN_DATA_SERVICE_TOKEN } from './train-data.service.js';
@@ -20,7 +20,7 @@ import { HttpTrainDataService, TRAIN_DATA_SERVICE_TOKEN } from './train-data.ser
   ],
   controllers: [TicketOfficeController],
   providers: [
-    ReservationService,
+    TicketOffice,
     ReservableTrainRepository,
     { provide: TRAIN_DATA_SERVICE_TOKEN, useClass: HttpTrainDataService },
     { provide: BOOKING_REFERENCE_FINDER_TOKEN, useClass: HttpBookingReferenceFinder },

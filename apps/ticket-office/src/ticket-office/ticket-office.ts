@@ -6,7 +6,7 @@ import { SeatCount } from './reservable-train.js';
 import { Reservation, ReservationRequest } from './ticket-office.types.js';
 
 @Injectable()
-export class ReservationService {
+export class TicketOffice {
   constructor(
     @Inject(BOOKING_REFERENCE_FINDER_TOKEN)
     private readonly bookingReferenceFinder: BookingReferenceFinder,
