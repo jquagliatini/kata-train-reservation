@@ -3,7 +3,7 @@ import path from 'node:path';
 
 import { z } from 'zod';
 
-import { configSchema } from '../src/ticket-office-config.type.js';
+import { configSchema } from '../src/config/ticket-office-config.type.js';
 
 main().catch(console.error);
 async function main() {

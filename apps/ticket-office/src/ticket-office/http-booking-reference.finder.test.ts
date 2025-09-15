@@ -3,10 +3,10 @@ import { mock } from 'vitest-mock-extended';
 import { of } from 'rxjs';
 import { Dispatcher } from 'undici';
 
-import { describe, it } from '../tests/fixtures.js';
+import { describe, it } from '../../tests/fixtures.js';
+import { TicketOfficeConfig } from '../config/ticket-office-config.type.js';
 
 import { HttpBookingReferenceFinder } from './http-booking-reference.finder.js';
-import { TicketOfficeConfig } from './ticket-office-config.type.js';
 
 describe('HttpBookingReferenceFinder', () => {
   it('should call the booking service', async ({ expect }) => {

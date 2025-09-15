@@ -5,10 +5,10 @@ import { Test } from '@nestjs/testing';
 import { agent, type Response as SResponse, type Test as SuperTest } from 'supertest';
 import { it as base } from 'vitest';
 
-import { TicketOfficeModule } from '../src/ticket-office.module.js';
-import { type Reservation } from '../src/ticket-office.js';
 import { type ReserveRequest } from '../src/types.js';
-import { BOOKING_REFERENCE_FINDER_TOKEN } from '../src/booking-reference.finder.js';
+import { Reservation } from '../src/ticket-office/ticket-office.js';
+import { TicketOfficeModule } from '../src/ticket-office/ticket-office.module.js';
+import { BOOKING_REFERENCE_FINDER_TOKEN } from '../src/ticket-office/booking-reference.finder.js';
 
 import { FakeBookingReferenceFinder } from './fakes.js';
 

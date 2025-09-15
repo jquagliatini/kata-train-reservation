@@ -3,7 +3,7 @@ import assert from 'node:assert';
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
-import { TicketOfficeModule } from './ticket-office.module.js';
+import { TicketOfficeModule } from './ticket-office/ticket-office.module.js';
 
 const logger = new Logger(`🎫 Ticket Office`);
 

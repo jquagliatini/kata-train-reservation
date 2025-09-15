@@ -3,9 +3,10 @@ import { HttpService } from 'nestjs-undici';
 import { firstValueFrom } from 'rxjs';
 import { getGlobalDispatcher, interceptors } from 'undici';
 
+import { TicketOfficeConfig } from '../config/ticket-office-config.type.js';
+
 import { BookingReferenceFinder } from './booking-reference.finder.js';
 import { BookingReference } from './booking-reference.js';
-import { TicketOfficeConfig } from './ticket-office-config.type.js';
 
 @Injectable()
 export class HttpBookingReferenceFinder implements BookingReferenceFinder {

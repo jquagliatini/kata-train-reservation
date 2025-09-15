@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { HttpModule } from 'nestjs-undici';
 
+import { TicketOfficeConfigModule } from '../config/ticket-office-config.module.js';
+
 import { TicketOfficeController } from './ticket-office.controller.js';
 import { BOOKING_REFERENCE_FINDER_TOKEN } from './booking-reference.finder.js';
-import { HttpBookingReferenceFinder } from './http-booking-reference.finder.js';
 import { ReservationService } from './reservation.service.js';
-import { TicketOfficeConfigModule } from './ticket-office-config.module.js';
+import { HttpBookingReferenceFinder } from './http-booking-reference.finder.js';
 
 @Module({
   imports: [HttpModule.register({}), TicketOfficeConfigModule],

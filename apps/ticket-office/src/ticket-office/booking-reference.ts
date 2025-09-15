@@ -1,4 +1,4 @@
-import { Branded } from './types.js';
+import { Branded } from '../types.js';
 
 export class BookingReference extends Branded<'BookingReference'> {
   constructor(private readonly value: string) {
