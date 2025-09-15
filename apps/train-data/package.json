@@ -6,6 +6,6 @@
   "scripts": {
     "compile": "tsc -p .",
     "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
-    "start": "PORT=51462 node dist"
+    "start": "PORT=3002 node dist"
   }
 }
