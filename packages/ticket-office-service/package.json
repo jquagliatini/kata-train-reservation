@@ -5,6 +5,7 @@
   "scripts": {
     "compile": "tsc -p .",
     "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
+    "prestart": "pnpm run build",
     "start": "PORT=59795 node dist/index"
   }
 }
