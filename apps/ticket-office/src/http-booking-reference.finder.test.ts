@@ -6,13 +6,16 @@ import { Dispatcher } from 'undici';
 import { describe, it } from '../tests/fixtures.js';
 
 import { HttpBookingReferenceFinder } from './http-booking-reference.finder.js';
+import { TicketOfficeConfig } from './ticket-office-config.type.js';
 
 describe('HttpBookingReferenceFinder', () => {
   it('should call the booking service', async ({ expect }) => {
     const http = mock<HttpService>();
     http.request.mockImplementation(() => of({ body: { text: async () => '21345780' } } as Dispatcher.ResponseData));
 
-    await new HttpBookingReferenceFinder(http).find();
+    await new HttpBookingReferenceFinder(http, {
+      outbound: { bookingReference: 'http://localhost:3001' },
+    } as TicketOfficeConfig).find();
 
     expect(http.request).toHaveBeenCalledWith(
       new URL('http://localhost:3001/booking_reference'),

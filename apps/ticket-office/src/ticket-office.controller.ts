@@ -2,7 +2,7 @@ import { Body, Controller, HttpCode, HttpStatus, Post, UsePipes } from '@nestjs/
 
 import { ZodValidationPipe } from './zod-validation.pipe.js';
 import { type ReserveRequest, ReserveRequestSchema } from './types.js';
-import { type Reservation, ReservationRequest, TicketOffice } from './ticket-office.js';
+import { type Reservation } from './ticket-office.js';
 import { ReservationService } from './reservation.service.js';
 
 @Controller()

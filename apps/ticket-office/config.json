@@ -1,0 +1,6 @@
+{
+  "$schema": "./config.schema.json",
+  "outbound": {
+    "bookingReference": "http://localhost:3001"
+  }
+}

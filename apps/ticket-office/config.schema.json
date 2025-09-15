@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "outbound": {
+      "type": "object",
+      "properties": {
+        "bookingReference": {
+          "allOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "string",
+              "pattern": "[^/]$"
+            }
+          ]
+        }
+      },
+      "required": [
+        "bookingReference"
+      ],
+      "additionalProperties": false
+    },
+    "$schema": {
+      "type": "string",
+      "const": "./config.schema.json"
+    }
+  },
+  "required": [
+    "outbound",
+    "$schema"
+  ],
+  "additionalProperties": false
+}

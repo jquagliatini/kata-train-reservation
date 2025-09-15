@@ -7,10 +7,14 @@
     "compile": "tsc -p .",
     "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
     "prestart": "pnpm run build",
-    "start": "PORT=3000 node dist"
+    "start": "PORT=3000 node dist",
+    "schema": "node --import @swc-node/register/esm-register scripts/configschema.ts"
   },
   "dependencies": {
     "nestjs-undici": "^0.2.57",
     "undici": "^7.16.0"
+  },
+  "devDependencies": {
+    "@swc-node/register": "^1.11.1"
   }
 }

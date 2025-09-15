@@ -1,6 +1,7 @@
 import assert from 'node:assert';
 import * as fs from 'node:fs';
 import { json } from 'node:stream/consumers';
+import path from 'node:path';
 
 import { NestFactory } from '@nestjs/core';
 import { Logger } from '@nestjs/common';
@@ -25,7 +26,7 @@ async function main() {
 
 async function getTrains(): Promise<Trains> {
   const rawTrains = await json(
-    fs.createReadStream(new URL(import.meta.resolve('../trains.json')), { encoding: 'utf-8' }),
+    fs.createReadStream(path.join(import.meta.dirname, '..', 'trains.json'), { encoding: 'utf-8' }),
   );
   const trainsSchema = z.record(
     z.string(),

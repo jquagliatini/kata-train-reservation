@@ -5,18 +5,22 @@ import { getGlobalDispatcher, interceptors } from 'undici';
 
 import { BookingReferenceFinder } from './booking-reference.finder.js';
 import { BookingReference } from './booking-reference.js';
+import { TicketOfficeConfig } from './ticket-office-config.type.js';
 
 @Injectable()
 export class HttpBookingReferenceFinder implements BookingReferenceFinder {
-  constructor(private readonly http: HttpService) {}
+  private readonly bookingReferenceBaseUrl: string;
+  constructor(
+    private readonly http: HttpService,
+    config: TicketOfficeConfig,
+  ) {
+    this.bookingReferenceBaseUrl = config.outbound.bookingReference;
+  }
 
-  // TODO:
-  //  - move to configuration
-  //  - remove keep-alive for localhost
-  private static readonly BOOKING_REFERENCE_URL = new URL('http://localhost:3001/booking_reference');
+  // TODO: remove keep-alive for localhost
   async find(): Promise<BookingReference> {
     const { body } = await firstValueFrom(
-      this.http.request(HttpBookingReferenceFinder.BOOKING_REFERENCE_URL, {
+      this.http.request(new URL(`${this.bookingReferenceBaseUrl}/booking_reference`), {
         method: 'GET',
         bodyTimeout: 200,
         idempotent: false,
