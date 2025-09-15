@@ -10,7 +10,8 @@ import { type Reservation } from '../src/ticket-office.js';
 import { type ReserveRequest } from '../src/types.js';
 
 type HttpResponse<T> = Omit<SResponse, 'body'> & { body: T };
-type HttpTest<T> = Omit<SuperTest, 'then'> & {
+type HttpTest<T> = Omit<SuperTest, 'then' | 'expect'> & {
+  expect(statusCode: number): HttpTest<T>;
   then(onFulfilled: (value: HttpResponse<T>) => unknown): Promise<HttpResponse<T>>;
 };
 
