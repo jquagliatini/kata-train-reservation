@@ -8,6 +8,9 @@ import { it as base } from 'vitest';
 import { TicketOfficeModule } from '../src/ticket-office.module.js';
 import { type Reservation } from '../src/ticket-office.js';
 import { type ReserveRequest } from '../src/types.js';
+import { BOOKING_REFERENCE_FINDER_TOKEN } from '../src/booking-reference.finder.js';
+
+import { FakeBookingReferenceFinder } from './fakes.js';
 
 type HttpResponse<T> = Omit<SResponse, 'body'> & { body: T };
 type HttpTest<T> = Omit<SuperTest, 'then' | 'expect'> & {
@@ -26,7 +29,11 @@ export class Fixtures {
 export { afterAll, afterEach, beforeAll, beforeEach, describe } from 'vitest';
 export const it = base.extend<{ http: Fixtures }>({
   http: async ({}, use) => {
-    const testingModule = await Test.createTestingModule({ imports: [TicketOfficeModule] }).compile();
+    const testingModule = await Test.createTestingModule({ imports: [TicketOfficeModule] })
+      .overrideProvider(BOOKING_REFERENCE_FINDER_TOKEN)
+      .useClass(FakeBookingReferenceFinder)
+      .compile();
+
     const app = await testingModule.createNestApplication<INestApplication<Server>>().init();
     const server = app.getHttpServer();
 

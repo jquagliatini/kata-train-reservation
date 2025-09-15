@@ -8,5 +8,8 @@
     "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
     "prestart": "pnpm run build",
     "start": "PORT=3000 node dist"
+  },
+  "dependencies": {
+    "undici": "^7.16.0"
   }
 }

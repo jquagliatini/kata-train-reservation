@@ -5,3 +5,8 @@ export const ReserveRequestSchema = z.object({
   seat_count: z.number().int(),
 });
 export type ReserveRequest = z.infer<typeof ReserveRequestSchema>;
+
+const BRAND = Symbol();
+export abstract class Branded<Brand extends string> {
+  [BRAND]!: Brand;
+}
