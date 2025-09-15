@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 
 import { BookingReferenceFinder } from '../src/ticket-office/booking-reference.finder.js';
 import { BookingReference } from '../src/ticket-office/booking-reference.js';
-import { TrainDataService } from '../src/ticket-office/http-train-data.service.js';
+import { TrainDataService } from '../src/ticket-office/train-data.service.js';
 
 @Injectable()
 export class FakeBookingReferenceFinder implements BookingReferenceFinder {

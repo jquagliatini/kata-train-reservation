@@ -18,6 +18,9 @@ export class ReservationService {
     const train = await this.reservableTrainRepository.find(request.trainId);
 
     const seats = train.book(SeatCount.from(request.seatCount));
+
+    await this.reservableTrainRepository.persist(train);
+
     return {
       trainId: request.trainId,
       seats: seats.map(({ coach, seatNumber }) => ({ coach, seatNumber: Number(seatNumber) })),

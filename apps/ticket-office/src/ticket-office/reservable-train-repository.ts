@@ -1,6 +1,6 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException, NotImplementedException } from '@nestjs/common';
 
-import { TRAIN_DATA_SERVICE_TOKEN, type TrainDataService } from './http-train-data.service.js';
+import { TRAIN_DATA_SERVICE_TOKEN, type TrainDataService } from './train-data.service.js';
 import { Coach, ReservableTrain } from './reservable-train.js';
 
 @Injectable()
@@ -23,5 +23,9 @@ export class ReservableTrainRepository {
       .toArray();
 
     return new ReservableTrain(coaches);
+  }
+
+  persist(train: ReservableTrain): Promise<void> {
+    throw new NotImplementedException();
   }
 }

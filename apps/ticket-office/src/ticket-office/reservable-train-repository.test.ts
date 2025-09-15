@@ -3,9 +3,9 @@ import { mock } from 'vitest-mock-extended';
 
 import { describe, it } from '../../tests/fixtures.js';
 
-import { TrainDataService } from './http-train-data.service.js';
+import { TrainDataService } from './train-data.service.js';
 import { ReservableTrainRepository } from './reservable-train-repository.js';
-import { Coach, ReservableTrain } from './reservable-train.js';
+import { Coach, ReservableTrain, SeatCount } from './reservable-train.js';
 
 describe('ReservableTrainRepository', () => {
   it('should map a TrainDataTrain, into a ReservableTrain', async ({ expect }) => {
@@ -50,5 +50,28 @@ describe('ReservableTrainRepository', () => {
 
     const repository = new ReservableTrainRepository(trainDataService);
     await expect(() => repository.find('express_2000')).rejects.toThrowError(NotFoundException);
+  });
+
+  it('should persist the reservation into the train data service', async ({ expect }) => {
+    const trainDataService = mock<TrainDataService>();
+    trainDataService.book.mockResolvedValue();
+    const repository = new ReservableTrainRepository(trainDataService);
+    const train = new ReservableTrain([
+      new Coach('A', [
+        { isBooked: false, number: '1' },
+        { isBooked: false, number: '2' },
+        { isBooked: false, number: '3' },
+        { isBooked: false, number: '4' },
+      ]),
+    ]);
+
+    train.book(SeatCount.from(1));
+    await repository.persist(train);
+
+    expect(trainDataService.book).toHaveBeenCalledWith({
+      booking_reference: '75bcd15',
+      train_id: 'express_2000',
+      seats: ['1A'],
+    });
   });
 });

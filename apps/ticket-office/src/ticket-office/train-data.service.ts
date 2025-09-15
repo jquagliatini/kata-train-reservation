@@ -13,6 +13,7 @@ type TrainDataTrain = z.infer<typeof trainSchema>;
 
 export interface TrainDataService {
   getTrain(id: string): Promise<TrainDataTrain | null>;
+  book(request: { train_id: string; seats: string[]; booking_reference: string }): Promise<void>;
 }
 
 export const TRAIN_DATA_SERVICE_TOKEN = Symbol();
@@ -40,5 +41,22 @@ export class HttpTrainDataService implements TrainDataService {
 
     const rawTrain = await body.json();
     return trainSchema.nullable().parseAsync(rawTrain);
+  }
+
+  async book(request: { train_id: string; seats: string[]; booking_reference: string }): Promise<void> {
+    const url = new URL(`${this.trainDataBaseUrl}/reserve`);
+    const { statusCode } = await firstValueFrom(
+      this.http.request(url, {
+        method: 'POST',
+        idempotent: true,
+        body: JSON.stringify(request),
+        headers: { 'content-type': 'application/json' },
+      }),
+    );
+
+    if (statusCode >= 400) {
+      this.logger.error(`status code ${statusCode}`);
+      throw new InternalServerErrorException();
+    }
   }
 }

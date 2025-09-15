@@ -9,7 +9,7 @@ import { BOOKING_REFERENCE_FINDER_TOKEN } from './booking-reference.finder.js';
 import { ReservationService } from './reservation.service.js';
 import { HttpBookingReferenceFinder } from './http-booking-reference.finder.js';
 import { ReservableTrainRepository } from './reservable-train-repository.js';
-import { HttpTrainDataService, TRAIN_DATA_SERVICE_TOKEN } from './http-train-data.service.js';
+import { HttpTrainDataService, TRAIN_DATA_SERVICE_TOKEN } from './train-data.service.js';
 
 @Module({
   imports: [
