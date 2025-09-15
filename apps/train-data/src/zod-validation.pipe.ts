@@ -6,7 +6,7 @@ export class ZodValidationPipe implements PipeTransform {
 
   async transform(value: any, _metadata: ArgumentMetadata) {
     return this.schema.parseAsync(value).catch((err) => {
-      throw new BadRequestException(err instanceof z.ZodError ? err.message : err);
+      throw new BadRequestException(err instanceof z.ZodError ? err.issues : err);
     });
   }
 }

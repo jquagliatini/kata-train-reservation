@@ -1,10 +1,11 @@
 {
-  "name": "booking-reference-service",
+  "name": "booking-reference",
   "version": "0.0.0",
   "type": "module",
+  "main": "dist/index.js",
   "scripts": {
     "compile": "tsc -p .",
     "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
-    "start": "PORT=11972 node dist/index"
+    "start": "PORT=11972 node dist"
   }
 }

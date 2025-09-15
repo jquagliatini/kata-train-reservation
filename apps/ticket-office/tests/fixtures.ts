@@ -3,7 +3,7 @@ import { Test } from '@nestjs/testing';
 import { type Server } from 'node:http';
 import { agent, type Response as SResponse, type Test as SuperTest } from 'supertest';
 import { it as base } from 'vitest';
-import { AppModule } from '../src/app.js';
+import { TicketOfficeModule } from '../src/ticket-office.module.js';
 import { type Reservation } from '../src/ticket-office.js';
 import { type ReserveRequest } from '../src/types.js';
 
@@ -23,7 +23,7 @@ export class Fixtures {
 export { afterAll, afterEach, beforeAll, beforeEach, describe } from 'vitest';
 export const it = base.extend<{ http: Fixtures }>({
   http: async ({}, use) => {
-    const testingModule = await Test.createTestingModule({ imports: [AppModule] }).compile();
+    const testingModule = await Test.createTestingModule({ imports: [TicketOfficeModule] }).compile();
     const app = await testingModule.createNestApplication<INestApplication<Server>>().init();
     const server = app.getHttpServer();
 

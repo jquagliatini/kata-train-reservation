@@ -4,10 +4,10 @@ import { TrainDataController } from './train-data.controller.js';
 import { TRAIN_DATA_TOKEN } from './train-data.constants.js';
 
 @Module({})
-export class App {
+export class TrainDataModule {
   static withTrains(trains: Trains): DynamicModule {
     return {
-      module: App,
+      module: TrainDataModule,
       controllers: [TrainDataController],
       providers: [{ provide: TRAIN_DATA_TOKEN, useValue: trains }],
     };

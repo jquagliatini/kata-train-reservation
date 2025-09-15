@@ -3,4 +3,4 @@ onlyBuiltDependencies:
   - unrs-resolver
 
 packages:
-  - packages/*
+  - apps/*

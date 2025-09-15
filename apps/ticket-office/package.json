@@ -1,11 +1,12 @@
 {
-  "name": "ticket-office-service",
+  "name": "ticket-office",
   "version": "0.0.0",
   "type": "module",
+  "main": "dist/index.js",
   "scripts": {
     "compile": "tsc -p .",
     "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
     "prestart": "pnpm run build",
-    "start": "PORT=59795 node dist/index"
+    "start": "PORT=59795 node dist"
   }
 }

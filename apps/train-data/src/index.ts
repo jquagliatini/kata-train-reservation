@@ -4,10 +4,10 @@ import assert from 'node:assert';
 import * as fs from 'node:fs';
 import { json } from 'node:stream/consumers';
 import { z } from 'zod';
-import { App } from './app.js';
+import { TrainDataModule } from './train-data.module.js';
 import { Seat, Train, Trains } from './models.js';
 
-const logger = new Logger('🚆 TrainDataService');
+const logger = new Logger('🚆 Train Data');
 
 main().catch((err) => logger.fatal(err));
 async function main() {
@@ -15,7 +15,7 @@ async function main() {
   assert.ok(Number.isFinite(port), 'no PORT envvar available');
 
   const trains = await getTrains();
-  const app = await NestFactory.create(App.withTrains(trains));
+  const app = await NestFactory.create(TrainDataModule.withTrains(trains));
   await app.listen(port);
 
   logger.log(`0.0.0.0:${port}`);
