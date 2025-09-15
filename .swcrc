@@ -1,0 +1,14 @@
+{
+  "$schema": "https://swc.rs/schema.json",
+  "jsc": {
+    "target": "esnext",
+    "parser": {
+      "syntax": "typescript",
+      "decorators": true
+    },
+    "transform": {
+      "decoratorMetadata": true,
+      "legacyDecorator": true
+    }
+  }
+}

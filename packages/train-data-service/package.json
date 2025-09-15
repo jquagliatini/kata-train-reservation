@@ -1,0 +1,9 @@
+{
+  "name": "train-data-service",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
+    "start": "PORT=51462 node dist/index"
+  }
+}
