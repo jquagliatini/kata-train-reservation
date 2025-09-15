@@ -1,4 +1,4 @@
-import z from 'zod';
+import { z } from 'zod';
 
 export const ReserveRequestSchema = z.object({
   train_id: z.string(),

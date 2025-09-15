@@ -1,9 +1,13 @@
-import z from 'zod';
+import { z } from 'zod';
 
 export type Trains = Record<string, Train>;
 
 export class Seat {
-  constructor(readonly coach: string, readonly seat_number: string, public booking_reference: string) {}
+  constructor(
+    readonly coach: string,
+    readonly seat_number: string,
+    public booking_reference: string,
+  ) {}
 }
 
 export class Train {

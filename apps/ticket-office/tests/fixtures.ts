@@ -1,8 +1,10 @@
+import { type Server } from 'node:http';
+
 import { type INestApplication } from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import { type Server } from 'node:http';
 import { agent, type Response as SResponse, type Test as SuperTest } from 'supertest';
 import { it as base } from 'vitest';
+
 import { TicketOfficeModule } from '../src/ticket-office.module.js';
 import { type Reservation } from '../src/ticket-office.js';
 import { type ReserveRequest } from '../src/types.js';

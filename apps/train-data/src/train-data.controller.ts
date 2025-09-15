@@ -1,4 +1,5 @@
 import { BadRequestException, Body, Controller, Get, Inject, Param, Post, UsePipes } from '@nestjs/common';
+
 import { type ReserveRequest, ReserveRequestSchema, Train, type Trains } from './models.js';
 import { TRAIN_DATA_TOKEN } from './train-data.constants.js';
 import { ZodValidationPipe } from './zod-validation.pipe.js';

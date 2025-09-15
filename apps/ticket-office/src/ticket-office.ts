@@ -7,7 +7,10 @@ export class TicketOffice {
 }
 
 export class ReservationRequest {
-  constructor(public trainId: string, public seatCount: number) {}
+  constructor(
+    public trainId: string,
+    public seatCount: number,
+  ) {}
 }
 
 type Seat = {

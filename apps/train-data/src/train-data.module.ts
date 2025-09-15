@@ -1,4 +1,5 @@
 import { DynamicModule, Module } from '@nestjs/common';
+
 import { Trains } from './models.js';
 import { TrainDataController } from './train-data.controller.js';
 import { TRAIN_DATA_TOKEN } from './train-data.constants.js';

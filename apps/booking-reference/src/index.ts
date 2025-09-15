@@ -1,6 +1,8 @@
+import assert from 'node:assert';
+
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import assert from 'node:assert';
+
 import { BookingReferenceModule } from './booking-reference.module.js';
 
 const logger = new Logger('📌 BookingReference');
