@@ -16,10 +16,23 @@
               "pattern": "[^/]$"
             }
           ]
+        },
+        "trainData": {
+          "allOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "string",
+              "pattern": "[^/]$"
+            }
+          ]
         }
       },
       "required": [
-        "bookingReference"
+        "bookingReference",
+        "trainData"
       ],
       "additionalProperties": false
     },

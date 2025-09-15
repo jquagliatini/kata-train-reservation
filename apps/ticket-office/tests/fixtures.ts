@@ -9,8 +9,9 @@ import { type ReserveRequest } from '../src/types.js';
 import { Reservation } from '../src/ticket-office/ticket-office.js';
 import { TicketOfficeModule } from '../src/ticket-office/ticket-office.module.js';
 import { BOOKING_REFERENCE_FINDER_TOKEN } from '../src/ticket-office/booking-reference.finder.js';
+import { TRAIN_DATA_SERVICE_TOKEN } from '../src/ticket-office/http-train-data.service.js';
 
-import { FakeBookingReferenceFinder } from './fakes.js';
+import { FakeBookingReferenceFinder, FakeTrainDataService } from './fakes.js';
 
 type HttpResponse<T> = Omit<SResponse, 'body'> & { body: T };
 type HttpTest<T> = Omit<SuperTest, 'then' | 'expect'> & {
@@ -32,6 +33,8 @@ export const it = base.extend<{ http: Fixtures }>({
     const testingModule = await Test.createTestingModule({ imports: [TicketOfficeModule] })
       .overrideProvider(BOOKING_REFERENCE_FINDER_TOKEN)
       .useClass(FakeBookingReferenceFinder)
+      .overrideProvider(TRAIN_DATA_SERVICE_TOKEN)
+      .useClass(FakeTrainDataService)
       .compile();
 
     const app = await testingModule.createNestApplication<INestApplication<Server>>().init();

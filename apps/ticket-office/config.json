@@ -1,6 +1,7 @@
 {
   "$schema": "./config.schema.json",
   "outbound": {
-    "bookingReference": "http://localhost:3001"
+    "bookingReference": "http://localhost:3001",
+    "trainData": "http://localhost:3002"
   }
 }
