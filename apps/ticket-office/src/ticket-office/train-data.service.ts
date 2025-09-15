@@ -6,7 +6,10 @@ import { firstValueFrom } from 'rxjs';
 import { TicketOfficeConfig } from '../config/ticket-office-config.type.js';
 
 const trainSchema = z.object({
-  seats: z.record(z.string(), z.object({ coach: z.string(), seat_number: z.string(), booking_reference: z.string() })),
+  seats: z.record(
+    z.string(),
+    z.object({ coach: z.string(), seat_number: z.coerce.number(), booking_reference: z.string() }),
+  ),
 });
 
 type TrainDataTrain = z.infer<typeof trainSchema>;

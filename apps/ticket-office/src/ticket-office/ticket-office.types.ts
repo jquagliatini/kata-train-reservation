@@ -1,11 +1,3 @@
-import { NotImplementedException } from '@nestjs/common';
-
-export class TicketOffice {
-  makeReservation(_request: ReservationRequest): Reservation {
-    throw new NotImplementedException();
-  }
-}
-
 export class ReservationRequest {
   constructor(
     public trainId: string,

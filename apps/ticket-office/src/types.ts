@@ -10,3 +10,5 @@ const BRAND = Symbol();
 export abstract class Branded<Brand extends string> {
   [BRAND]!: Brand;
 }
+
+export type Ctor<T> = new (...args: any[]) => T;

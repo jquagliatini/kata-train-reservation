@@ -7,9 +7,13 @@ describe('TicketOffice', () => {
     await http.reserve({ hello: 'world' } as any).expect(HttpStatus.BAD_REQUEST);
   });
 
-  it('should use a booking reference from the BookingReference service', async ({ expect, http }) => {
+  it('should book a seat', async ({ expect, http }) => {
     const reservation = await http.reserve({ seat_count: 1, train_id: 'express_2000' }).expect(HttpStatus.OK);
 
-    expect(reservation.body.bookingId).toEqual('75bcd15');
+    expect(reservation.body).toEqual({
+      trainId: 'express_2000',
+      seats: [{ coach: 'A', seatNumber: 1 }],
+      bookingId: '75bcd15',
+    });
   });
 });

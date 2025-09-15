@@ -3,7 +3,7 @@ import { Body, Controller, HttpCode, HttpStatus, Post, UsePipes } from '@nestjs/
 import { ZodValidationPipe } from '../zod-validation.pipe.js';
 import { type ReserveRequest, ReserveRequestSchema } from '../types.js';
 
-import { type Reservation } from './ticket-office.js';
+import { type Reservation } from './ticket-office.types.js';
 import { ReservationService } from './reservation.service.js';
 
 @Controller()
@@ -14,7 +14,7 @@ export class TicketOfficeController {
   @HttpCode(HttpStatus.OK)
   @UsePipes(new ZodValidationPipe(ReserveRequestSchema))
   reserve(@Body() request: ReserveRequest): Promise<Reservation> {
-    return this.reservations.reserve({
+    return this.reservations.makeReservation({
       trainId: request.train_id,
       seatCount: request.seat_count,
     });

@@ -6,7 +6,7 @@ import { agent, type Response as SResponse, type Test as SuperTest } from 'super
 import { it as base } from 'vitest';
 
 import { type ReserveRequest } from '../src/types.js';
-import { Reservation } from '../src/ticket-office/ticket-office.js';
+import { Reservation } from '../src/ticket-office/ticket-office.types.js';
 import { TicketOfficeModule } from '../src/ticket-office/ticket-office.module.js';
 import { BOOKING_REFERENCE_FINDER_TOKEN } from '../src/ticket-office/booking-reference.finder.js';
 import { TRAIN_DATA_SERVICE_TOKEN } from '../src/ticket-office/train-data.service.js';

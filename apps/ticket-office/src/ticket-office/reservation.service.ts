@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 
 import { BOOKING_REFERENCE_FINDER_TOKEN, type BookingReferenceFinder } from './booking-reference.finder.js';
-import { type ReservableTrainRepository } from './reservable-train-repository.js';
+import { ReservableTrainRepository } from './reservable-train-repository.js';
 import { SeatCount } from './reservable-train.js';
-import { Reservation } from './ticket-office.js';
+import { Reservation, ReservationRequest } from './ticket-office.types.js';
 
 @Injectable()
 export class ReservationService {
@@ -13,11 +13,11 @@ export class ReservationService {
     private readonly reservableTrainRepository: ReservableTrainRepository,
   ) {}
 
-  async reserve(request: { trainId: string; seatCount: number }): Promise<Reservation> {
+  async makeReservation(request: ReservationRequest): Promise<Reservation> {
     const bookingReference = await this.bookingReferenceFinder.find();
     const train = await this.reservableTrainRepository.find(request.trainId);
 
-    const seats = train.book(SeatCount.from(request.seatCount));
+    const seats = train.book(bookingReference, SeatCount.from(request.seatCount));
 
     await this.reservableTrainRepository.persist(train);
 
