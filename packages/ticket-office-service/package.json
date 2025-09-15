@@ -1,10 +1,10 @@
 {
-  "name": "train-data-service",
+  "name": "ticket-office-service",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "compile": "tsc -p .",
     "build": "swc --config-file ../../.swcrc --out-dir dist --strip-leading-paths src",
-    "start": "PORT=51462 node dist/index"
+    "start": "PORT=59795 node dist/index"
   }
 }

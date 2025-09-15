@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import assert from 'node:assert';
 import * as fs from 'node:fs';
@@ -6,16 +7,18 @@ import { z } from 'zod';
 import { App } from './app.js';
 import { Seat, Train, Trains } from './models.js';
 
-main().catch(console.error);
-async function main() {
-  const trains = await getTrains();
-  const app = await NestFactory.create(App.withTrains(trains));
+const logger = new Logger('🚆 TrainDataService');
 
+main().catch((err) => logger.fatal(err));
+async function main() {
   const port = Number(process.env['PORT']);
   assert.ok(Number.isFinite(port), 'no PORT envvar available');
 
+  const trains = await getTrains();
+  const app = await NestFactory.create(App.withTrains(trains));
   await app.listen(port);
-  console.log(`🚆 TrainDataService, 0.0.0.0:${port}`);
+
+  logger.log(`0.0.0.0:${port}`);
 }
 
 async function getTrains(): Promise<Trains> {
